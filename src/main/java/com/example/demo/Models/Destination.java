@@ -19,6 +19,9 @@ public class Destination {
     LocalDate date;
     LocalTime timeOfDeparture;
 
+    public Destination() {
+    }
+
     public Destination(String name, Address address, LocalDate date, LocalTime timeOfDeparture) {
         this.name = name;
         this.address = address;

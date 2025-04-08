@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "group")
+@Table(name = "customerGroup")
 public class Group {
 
     @Id
@@ -20,6 +20,9 @@ public class Group {
     @JoinColumn(name = "trip_id")
     Trip trip;
 
+    public Group() {
+    }
+
     public Group(List<Customer> customers) {
         this.customers = customers;
     }
@@ -27,6 +30,14 @@ public class Group {
     public Group(List<Customer> customers, Address address) {
         this.customers = customers;
         this.address = address;
+    }
+
+    public Trip getTrip() {
+        return trip;
+    }
+
+    public void setTrip(Trip trip) {
+        this.trip = trip;
     }
 
     public UUID getUuid() {

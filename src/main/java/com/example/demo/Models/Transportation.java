@@ -24,6 +24,9 @@ public class Transportation {
         this.requiredDrivingLicenseCategory = requiredDrivingLicenseCategory;
     }
 
+    public Transportation() {
+    }
+
     public UUID getUuid() {
         return uuid;
     }

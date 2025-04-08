@@ -21,6 +21,9 @@ public class Trip {
     @OneToOne
     Driver driver;
 
+    public Trip() {
+    }
+
     public Trip(Destination destination, List<Group> groups, Transportation transportation, Driver driver) {
         this.destination = destination;
         this.groups = groups;
