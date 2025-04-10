@@ -2,6 +2,7 @@ package com.example.demo.Models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,24 +12,32 @@ public class Trip {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    UUID uuid;
-    @OneToOne
-    Destination destination;
-    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL)
-    List<Group> groups;
-    @OneToOne
-    Transportation transportation;
-    @OneToOne
-    Driver driver;
+    private UUID uuid;
+
+    private UUID destinationId;
+
+    @ElementCollection
+    private List<UUID> groupId = new ArrayList<>();
+
+    private UUID transportationId;
 
     public Trip() {
     }
 
-    public Trip(Destination destination, List<Group> groups, Transportation transportation, Driver driver) {
-        this.destination = destination;
-        this.groups = groups;
-        this.transportation = transportation;
-        this.driver = driver;
+    public Trip(UUID destinationId, List<UUID> groupId, UUID transportationId) {
+        this.destinationId = destinationId;
+        this.groupId = groupId;
+        this.transportationId = transportationId;
+    }
+
+    @Override
+    public String toString() {
+        return "Trip{" +
+                "uuid=" + uuid +
+                ", destinationId=" + destinationId +
+                ", groupId=" + groupId +
+                ", transportationId=" + transportationId +
+                '}';
     }
 
     public UUID getUuid() {
@@ -39,45 +48,27 @@ public class Trip {
         this.uuid = uuid;
     }
 
-    public Destination getDestination() {
-        return destination;
+    public UUID getDestinationId() {
+        return destinationId;
     }
 
-    public void setDestination(Destination destination) {
-        this.destination = destination;
+    public void setDestinationId(UUID destinationId) {
+        this.destinationId = destinationId;
     }
 
-    public List<Group> getGroups() {
-        return groups;
+    public List<UUID> getGroupId() {
+        return groupId;
     }
 
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
+    public void setGroupId(List<UUID> groupId) {
+        this.groupId = groupId;
     }
 
-    public Transportation getTransportation() {
-        return transportation;
+    public UUID getTransportationId() {
+        return transportationId;
     }
 
-    public void setTransportation(Transportation transportation) {
-        this.transportation = transportation;
-    }
-
-    public Driver getDriver() {
-        return driver;
-    }
-
-    public void setDriver(Driver driver) {
-        this.driver = driver;
-    }
-
-    @Override
-    public String toString() {
-        return "Trip{" +
-                "destination=" + destination +
-                ", groups=" + groups +
-                ", transportation=" + transportation +
-                ", driver=" + driver +
-                '}';
+    public void setTransportationId(UUID transportationId) {
+        this.transportationId = transportationId;
     }
 }

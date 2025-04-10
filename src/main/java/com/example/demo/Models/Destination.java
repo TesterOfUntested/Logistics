@@ -13,10 +13,14 @@ public class Destination {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     UUID uuid;
+    
     String name;
+
     @Embedded
     Address address;
+
     LocalDate date;
+
     LocalTime timeOfDeparture;
 
     public Destination() {

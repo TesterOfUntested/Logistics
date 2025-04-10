@@ -14,12 +14,12 @@ public class TripController {
     @Autowired
     private TripRepository tripRepository;
 
-    @GetMapping
+    @GetMapping("/getAllTrips")
     public List<Trip> getAllTrips() {
         return tripRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/createTrip")
     public Trip createTrip(@RequestBody Trip trip) {
         return tripRepository.save(trip);
     }

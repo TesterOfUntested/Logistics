@@ -2,6 +2,7 @@ package com.example.demo.Models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,13 +13,15 @@ public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     UUID uuid;
+
     @OneToMany
     List<Customer> customers;
+
     @Embedded
     Address address;
-    @ManyToOne
-    @JoinColumn(name = "trip_id")
-    Trip trip;
+
+    @ElementCollection
+    private List<UUID> tripIds = new ArrayList<>();
 
     public Group() {
     }
@@ -32,12 +35,12 @@ public class Group {
         this.address = address;
     }
 
-    public Trip getTrip() {
-        return trip;
+    public List<UUID> getTripIds() {
+        return tripIds;
     }
 
-    public void setTrip(Trip trip) {
-        this.trip = trip;
+    public void setTripIds(List<UUID> tripIds) {
+        this.tripIds = tripIds;
     }
 
     public UUID getUuid() {

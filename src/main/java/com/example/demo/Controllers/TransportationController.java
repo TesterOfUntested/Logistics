@@ -14,13 +14,13 @@ public class TransportationController {
     @Autowired
     private TransportationRepository transportationRepository;
 
-    @GetMapping
+    @GetMapping("/getAllTransportations")
     public List<Transportation> getAllTransportations() {
         return transportationRepository.findAll();
     }
 
-    @PostMapping
-    public Transportation createTransportation(@RequestBody Transportation transportation) {
+    @PostMapping("/createTransportation")
+    public Transportation createTransportation(@ModelAttribute Transportation transportation) {
         return transportationRepository.save(transportation);
     }
 }
