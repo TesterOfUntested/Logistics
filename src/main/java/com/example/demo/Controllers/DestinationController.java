@@ -23,8 +23,12 @@ public class DestinationController {
 
     @GetMapping("/getDestinationById")
     public Optional<Destination> getDestinationById(@RequestParam UUID uuid) {
-        System.out.println(destinationRepository.findById(uuid));
         return destinationRepository.findById(uuid);
+    }
+
+    @GetMapping("/getDestinationByName")
+    public Optional<Destination> getDestinationByName(@RequestParam String name) {
+        return destinationRepository.findByName(name);
     }
 
     @PostMapping("/createDestination")

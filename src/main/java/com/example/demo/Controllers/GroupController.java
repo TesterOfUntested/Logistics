@@ -36,14 +36,14 @@ public class GroupController {
     }
 
     @GetMapping("/getGroupById")
-    public Optional<Group> getGroupById(UUID uuid) {
+    public Optional<Group> getGroupById(@RequestParam UUID uuid) {
         return groupRepository.findById(uuid);
     }
 
     @PostMapping("/addToGroup")
     public Group addToGroup(@RequestParam UUID customerId, @RequestParam UUID groupId) {
         Optional<Group> group = groupRepository.findById(groupId);
-        Optional<Customer> customer = customerRepository.findById(groupId);
+        Optional<Customer> customer = customerRepository.findById(customerId);
         group.get().addCustomer(customer.get());
         return groupRepository.save(group.get());
     }
