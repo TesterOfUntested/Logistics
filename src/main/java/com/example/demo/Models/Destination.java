@@ -13,7 +13,7 @@ public class Destination {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     UUID uuid;
-    
+
     String name;
 
     @Embedded
@@ -30,6 +30,38 @@ public class Destination {
         this.name = name;
         this.address = address;
         this.date = date;
+        this.timeOfDeparture = timeOfDeparture;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalTime getTimeOfDeparture() {
+        return timeOfDeparture;
+    }
+
+    public void setTimeOfDeparture(LocalTime timeOfDeparture) {
         this.timeOfDeparture = timeOfDeparture;
     }
 
