@@ -4,6 +4,7 @@ public enum DrivingLicenseCategory {
 
     B("B"),
     C("C"),
+    D("D"),
     CE("C+E");
 
     public final String category;

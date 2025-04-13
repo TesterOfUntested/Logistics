@@ -30,9 +30,9 @@ public class LogisticsApplication {
         Address driverAddress = new Address("Kraków", "Floriańska", "12", "1", "00-001");
         Driver driver = new Driver("Jan", "Mazur", 23, List.of(DrivingLicenseCategory.B), driverAddress);
 
-        Transportation transportation = new Transportation("Mercedes", 6, driver, DrivingLicenseCategory.B);
+        Transportation transportation = new Transportation("Mercedes", 6, driver.getUuid(), DrivingLicenseCategory.B);
 
-        Trip trip = new Trip(destination, List.of(group), transportation, driver);
+        Trip trip = new Trip(destination.getUuid(), List.of(group.getUuid()), transportation.getUuid());
         System.out.println(trip);
     }
 

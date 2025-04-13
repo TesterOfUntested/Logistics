@@ -13,15 +13,19 @@ public class Transportation {
     UUID uuid;
     String name;
     int numberOfPlaces;
-    @OneToOne
-    Driver driver;
+
+    UUID driverId;
+
     DrivingLicenseCategory requiredDrivingLicenseCategory;
 
-    public Transportation(String name, int numberOfPlaces, Driver driver, DrivingLicenseCategory requiredDrivingLicenseCategory) {
+    public Transportation(String name, int numberOfPlaces, UUID driverId, DrivingLicenseCategory requiredDrivingLicenseCategory) {
         this.name = name;
         this.numberOfPlaces = numberOfPlaces;
-        this.driver = driver;
+        this.driverId = driverId;
         this.requiredDrivingLicenseCategory = requiredDrivingLicenseCategory;
+    }
+
+    public Transportation() {
     }
 
     public UUID getUuid() {
@@ -48,12 +52,12 @@ public class Transportation {
         this.numberOfPlaces = numberOfPlaces;
     }
 
-    public Driver getDriver() {
-        return driver;
+    public UUID getDriverId() {
+        return driverId;
     }
 
-    public void setDriver(Driver driver) {
-        this.driver = driver;
+    public void setDriverId(UUID driverId) {
+        this.driverId = driverId;
     }
 
     public DrivingLicenseCategory getRequiredDrivingLicenseCategory() {
@@ -69,7 +73,7 @@ public class Transportation {
         return "Transportation{" +
                 "name='" + name + '\'' +
                 ", numberOfPlaces=" + numberOfPlaces +
-                ", driver=" + driver +
+                ", driver=" + driverId +
                 ", requiredDrivingLicenseCategory=" + requiredDrivingLicenseCategory +
                 '}';
     }
